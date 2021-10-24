@@ -6,7 +6,6 @@ exports.middlewareGlobal = (req, res, next) => {
   next();
 };
 exports.checkCSRFError = (err, req, res, next) => {
-  //Código do erro
   if (err) {
     console.log(err);
     return res.render("404");

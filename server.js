@@ -9,9 +9,9 @@ const {
 } = require("./src/middlewares/middleware");
 const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 3000;
-//Conectado a base de dados
+
 mongoose
-  //Para esconder a nossa senha
+
   .connect(process.env.CONNECTIONSTRING)
   .then(() => {
     console.log("conectado ao bd");
@@ -21,7 +21,7 @@ mongoose
     console.log("erro de conexão ao banco");
   });
 const session = require("express-session");
-//Salvar as session na base de dados
+
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const routes = require("./routes.js");
@@ -39,7 +39,7 @@ const sessionOptions = session({
     maxAge: 3 * 60 * 60 * 1000,
   },
 });
-//Bom desativar enquanto o sistema estiver em desenvolvimento
+
 //app.use(helmet());
 app.use(sessionOptions);
 app.use(cookieParser());
@@ -50,9 +50,9 @@ app.use(
   })
 );
 app.use(flash());
-//Colocar antes das rotas
+
 app.use(csrf({ cookie: true }));
-//Injetar o token em todas as paǵinas
+
 app.use(express.static(path.resolve(__dirname, "Public")));
 app.set("views", path.resolve(__dirname, "src", "views"));
 app.set("view engine", "ejs");
