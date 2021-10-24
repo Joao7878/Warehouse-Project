@@ -1,0 +1,36 @@
+<%- include('include/head') %>
+
+<body>
+    <%- include('include/header') %>
+    <div class="container">
+        <%- include ('include/messages') %>
+        <div class="register">
+            <form action="/login/register" class="formulario" method="post">
+                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="Enter e-mail" class="input-padrao">
+
+                <label>Password</label>
+                <input type="password" placeholder="Password" name="password" class="input-padrao">
+
+                <label>Name</label>
+                <input type="text" placeholder="Name" name="name" class="input-padrao">
+
+                <label>Age</label>
+                <input type="number" placeholder="Age" name="age" class="input-padrao">
+                <input type="submit" value="Register" class="enviar">
+            </form>
+        </div>
+        <div class="login">
+            <form action="/login/login" class="formulario" method="post">
+                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="Enter e-mail" class="input-padrao">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password" class="input-padrao">
+                <button type="submit" class="enviar">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('include/footer') %>

@@ -1,0 +1,57 @@
+<%- include('include/head') %>
+
+<body>
+    <%- include('include/header') %>
+    <div class="divBtnMaterial">
+
+        <button type="submit" class="btnMaterial" data-form-button>Create Material</button>
+
+    </div>
+    <div class="container">
+        <h1>Your Materials</h1>
+        <%- include('include/messages')  %>
+
+        <ul class="list" data-list>
+            <li>
+                <form action="/logged/create" method="post" class="formaMaterial">
+                    <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                </form>
+            </li>
+        </ul>
+        <% if (user) { %>
+        <% if (materials.length>0) { %>
+        <% var bool = true %>
+        <% materials.forEach(material => { %>
+        <% if (material.createdBy === user._id) { %>
+        <div class="showMaterials">
+
+            <div class="formaMaterial">
+                <p class="pMaterial">
+                    Name: <%= material.name %>
+                </p>
+                <p class="pMaterial">
+                    Description: <%= material.description %>
+                </p>
+                <p class="pMaterial">
+                    Price: <%= material.price %>
+                </p>
+                <p class="pMaterial">
+                    Quantity: <%= material.quantity %>
+                </p>
+                <a href="/logged/update/<%-material._id%>"><button type="submit" class="btnMaterial1">Edit</button></a>
+                <a href="/logged/delete/<%-material._id%>"><button type=" submit"
+                        class="btnMaterial1">Delete</button></a>
+            </div>
+        </div>
+
+        <% } %>
+
+        <% }) %>
+        <% } %>
+
+        <% } %>
+
+
+
+    </div>
+    <%- include('include/footer') %>

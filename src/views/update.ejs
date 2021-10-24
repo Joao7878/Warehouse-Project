@@ -1,0 +1,33 @@
+<%- include('include/head') %>
+
+<body>
+    <%- include('include/header') %>
+    <div class="divBtnMaterial">
+    </div>
+    <div class="container">
+        <h1>Edit Material</h1>
+        <%- include('include/messages')  %>
+
+        <ul class="list" data-list>
+            <li>
+
+                <form action="/logged/update/<%= material._id %> " method="post" class="formaMaterial">
+                    <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                    <label>Name</label>
+                    <input type="text" name="name" class="input-padrao1" value='<%= material.name  %>'>
+                    <label>Description</label>
+                    <input type="text" name="description" class="input-padrao1" value='<%= material.description  %>'>
+                    <label>Price</label>
+                    <input type="text" name="price" class="input-padrao1" value='<%= material.price  %>'>
+                    <label>Quantity</label>
+                    <input type="number" name="quantity" class="input-padrao1" value='<%= material.quantity  %>'>
+                    <button type=" submit" class="btnMaterial1">Edit</button>
+                </form>
+            </li>
+        </ul>
+
+
+
+
+    </div>
+    <%- include('include/footer') %>
